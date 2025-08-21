@@ -10,7 +10,7 @@ type acrequest struct {
 	AccessCode string `json:"code"`
 }
 
-func req(w http.ResponseWriter, r *http.Request) {
+func AccessCodeHandler(w http.ResponseWriter, r *http.Request) {
 	/*client:=&http.Client{
 		Timeout:30*time.Second,
 	}*/
