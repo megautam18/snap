@@ -1,0 +1,18 @@
+{
+  "builds": [
+    {
+      "src": "api/*.go",
+      "use": "@vercel/go"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/code_check",
+      "dest": "/api/accesscodeapi.go"
+    },
+    {
+        "src": "/api/notes",
+        "dest": "/api/getnotes.go"
+    }
+  ]
+}
