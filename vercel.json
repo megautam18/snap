@@ -8,11 +8,19 @@
   "routes": [
     {
       "src": "/api/code_check",
+      "methods": ["POST"],
       "dest": "/api/accesscodeapi.go"
     },
     {
         "src": "/api/notes",
+        "methods": ["GET"],
         "dest": "/api/getnotes.go"
+    },
+    {
+      "src":"api/notes/update",
+      "methods":["GET"],
+      "dest":"/api/updatenotes.go"
     }
+
   ]
 }
