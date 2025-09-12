@@ -34,14 +34,15 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	var content string
 
 	sc_err := dbobj.QueryRowContext(cxt, "SELECT content FROM notepad WHERE id=1").Scan(&content)
-	note := note{Content: content}
-	if sc_err == sql.ErrNoRows {
-		note.Content = ""
-	}
-	if sc_err != nil {
+	if sc_err != nil && sc_err != sql.ErrNoRows {
 		http.Error(w, "Content not present in the database", http.StatusInternalServerError)
 		log.Print("Content not present in the database")
 		return
+	}
+
+	note := note{Content: content}
+	if sc_err == sql.ErrNoRows {
+		note.Content = ""
 	}
 	jsonResponse, json_err := json.Marshal(note)
 
